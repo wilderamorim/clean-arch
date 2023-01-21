@@ -1,0 +1,21 @@
+{
+  "name": "wilderamorim/clean-arch",
+  "description": "A PHP project using clean architecture for create categories",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Wilder Amorim",
+      "email": "wilderamorim@msn.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "require": {
+    "ext-json": "*",
+    "php": ">=7.4"
+  }
+}
