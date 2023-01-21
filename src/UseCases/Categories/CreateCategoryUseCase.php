@@ -30,14 +30,7 @@ class CreateCategoryUseCase
     public function execute(CategoryDTO $categoryDTO): array
     {
         $category = new Category($categoryDTO->getName(), $categoryDTO->getDescription());
-        $this->repository->create($category);
-
-        $file = dirname(__DIR__, 3) . '/database/categories.json';
-        if (!file_exists($file)) {
-            return ['error' => 'Oops, an error occurred'];
-        }
-
-        $categories = json_decode(file_get_contents($file), true);
+        $categories = $this->repository->create($category);
 
         return [
             'message' => 'Category created successfully',

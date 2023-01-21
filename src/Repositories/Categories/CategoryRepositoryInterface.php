@@ -12,7 +12,7 @@ interface CategoryRepositoryInterface
 {
     /**
      * @param Category $category
-     * @return void
+     * @return array
      */
-    public function create(Category $category): void;
+    public function create(Category $category): array;
 }

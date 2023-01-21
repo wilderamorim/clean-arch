@@ -13,9 +13,9 @@ class CategoryRepository implements CategoryRepositoryInterface
 {
     /**
      * @param Category $category
-     * @return void
+     * @return array
      */
-    public function create(Category $category): void
+    public function create(Category $category): array
     {
         $path = dirname(__DIR__, 3) . '/database';
         $file = $path . '/categories.json';
@@ -35,5 +35,11 @@ class CategoryRepository implements CategoryRepositoryInterface
 
         $json = json_encode(array_merge($api ?? [], $category), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         file_put_contents($file, $json);
+
+        if (!file_exists($file)) {
+            return ['error' => 'Oops, an error occurred'];
+        }
+
+        return json_decode(file_get_contents($file), true);
     }
 }
